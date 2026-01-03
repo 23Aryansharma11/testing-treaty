@@ -1,7 +1,9 @@
 import { Elysia } from 'elysia';
 import { userRoute } from './user';
+import cors from '@elysiajs/cors';
 
 const app = new Elysia()
+    .use(cors({ origin: "*" }))
     .get('/', () => ({ hello: 'Bun👋' }))
     .use(userRoute)
     .onError(({ code, error }) => {
